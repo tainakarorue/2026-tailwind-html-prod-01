@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/output.css" />
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- ScrollNav CSS -->
+    <link rel="stylesheet" href="css/scroll-nav.css" />
+    <link rel="stylesheet" href="css/gsap-slider.css" />
+    <link rel="stylesheet" href="css/drawer.css" />
+  </head>
+  <body class="w-full h-vh layout">
+    <aside class="drawer" id="drawer" aria-hidden="true">
+      <nav class="scroll-nav">
+        <ul class="scroll-nav__list">
+          <li>
+            <button
+              class="scroll-nav__item"
+              id="drawer-toggle"
+              aria-expanded="false"
+              aria-controls="drawer"
+            >
+              <span class="scroll-nav__icon">
+                <img
+                  class="icon-menu"
+                  src="https://api.iconify.design/mdi:menu.svg"
+                  width="20"
+                  height="20"
+                  alt=""
+                />
+                <img
+                  class="icon-close"
+                  src="https://api.iconify.design/mdi:close.svg"
+                  width="20"
+                  height="20"
+                  alt=""
+                />
+              </span>
+              <span class="scroll-nav__label">メニュー</span>
+            </button>
+          </li>
+          <li>
+            <button class="scroll-nav__item" data-scroll-target="section-1">
+              <span class="scroll-nav__icon">
+                <img
+                  src="https://api.iconify.design/mdi:animation.svg"
+                  width="20"
+                  height="20"
+                  alt=""
+                />
+              </span>
+              <span class="scroll-nav__label">Section 1</span>
+            </button>
+          </li>
+          <li>
+            <button class="scroll-nav__item" data-scroll-target="section-2">
+              <span class="scroll-nav__icon">
+                <img
+                  src="https://api.iconify.design/mdi:timeline.svg"
+                  width="20"
+                  height="20"
+                  alt=""
+                />
+              </span>
+              <span class="scroll-nav__label">Section 2</span>
+            </button>
+          </li>
+          <li>
+            <button class="scroll-nav__item" data-scroll-target="section-3">
+              <span class="scroll-nav__icon">
+                <img
+                  src="https://api.iconify.design/mdi:gesture-swipe-vertical.svg"
+                  width="20"
+                  height="20"
+                  alt=""
+                />
+              </span>
+              <span class="scroll-nav__label">Section 3</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- セクション -->
+    <main class="content">
+      <section id="section-1" class="section p-4 md:p-5">
+        <div
+          class="w-full max-w-[1580px] h-[95vh] flex flex-col items-center justify-center main-visual"
+        >
+          <div id="snow-canvas-container"></div>
+          <!-- パルスリング -->
+          <div id="pulse-container">
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+          </div>
+          <div>
+            <img
+              src="images/logo.png"
+              alt="Logo"
+              class="max-w-[90%] main-logo"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="section-2" class="section">
+        <div class="section-inner">
+          <h2 class="section-title">Section 2 - Timeline</h2>
+          <p class="section-description">複数アニメーションを連続実行</p>
+          <div class="circle-container">
+            <div class="circle"></div>
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+            <div class="dot dot-3"></div>
+            <div class="dot dot-4"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-3" class="section">
+        <div class="parallax-bg"></div>
+        <div class="section-inner">
+          <h2 class="section-title">Section 3 - Scrub</h2>
+          <p class="section-description">
+            スクロール量に連動してアニメーション
+          </p>
+          <div class="horizontal-container">
+            <div class="horizontal-box">A</div>
+            <div class="horizontal-box">B</div>
+            <div class="horizontal-box">C</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="py-20">
+        <div class="swiper gsap-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-color: #fef3c7">
+              <h2 class="slide-title">Slide 1</h2>
+              <p class="slide-description">説明テキスト</p>
+            </div>
+
+            <div class="swiper-slide" style="background-color: #dbeafe">
+              <h2 class="slide-title">Slide 2</h2>
+              <p class="slide-description">説明テキスト</p>
+            </div>
+
+            <div class="swiper-slide" style="background-color: #dcfce7">
+              <h2 class="slide-title">Slide 3</h2>
+              <p class="slide-description">説明テキスト</p>
+            </div>
+          </div>
+          <!-- ナビゲーション -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+
+          <!-- ページネーション -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- オーバーレイ -->
+    <div id="drawer-overlay" class="drawer-overlay"></div>
+
+    <!-- モバイル用ドロワー開閉ボタン -->
+    <button
+      id="drawer-toggle-mobile"
+      class="drawer-toggle-mobile"
+      aria-label="メニューを開く"
+    >
+      <img
+        class="icon-menu"
+        src="https://api.iconify.design/mdi:menu.svg"
+        width="24"
+        height="24"
+        alt=""
+      />
+      <img
+        class="icon-close"
+        src="https://api.iconify.design/mdi:close.svg"
+        width="24"
+        height="24"
+        alt=""
+      />
+    </button>
+    <script src="js/three.min.js"></script>
+    <script src="js/main-visual-snow.js"></script>
+    <!-- CDN: GSAP + ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <!-- CDN: Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <!-- ScrollNav -->
+    <script src="js/scroll-nav-init.js"></script>
+    <script src="js/scroll-nav.js"></script>
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/gsap-swiper.js"></script>
+    <script src="js/gsap-sections.js"></script>
+
+    <!-- 初期化 -->
+    <script src="js/init.js"></script>
+
+    <script src="js/drawer.js"></script>
+    <script>
+      // 初期化
+      document.addEventListener('DOMContentLoaded', () => {
+        // 使用例：ボタンのみ
+        // const drawer = new DrawerMenu({ trigger: { button: true, keyboard: false } });
+
+        // 使用例：キーボードのみ（Escキー）
+        // const drawer = new DrawerMenu({ trigger: { button: false, keyboard: true, key: 'Escape' } });
+
+        // デフォルト：両方対応
+        const drawer = new DrawerMenu({
+          trigger: {
+            button: true,
+            keyboard: true,
+            key: 'Escape',
+          },
+        })
+
+        // モバイル用トグルボタン
+        const mobileBtn = document.getElementById('drawer-toggle-mobile')
+        mobileBtn.addEventListener('click', () => drawer.toggleDrawer())
+
+        // オーバーレイ：クリックで閉じる
+        const overlay = document.getElementById('drawer-overlay')
+        overlay.addEventListener('click', () => drawer.close())
+
+        // ナビアイテムクリックでドロワーを閉じる
+        document.querySelectorAll('[data-scroll-target]').forEach((btn) => {
+          btn.addEventListener('click', () => drawer.close())
+        })
+
+        // drawer の開閉に合わせてオーバーレイ・モバイルボタンアイコンを切り替え
+        const drawerEl = document.getElementById('drawer')
+        new MutationObserver(() => {
+          const isOpen = drawerEl.classList.contains('is-open')
+          overlay.classList.toggle('is-visible', isOpen)
+          mobileBtn.querySelector('.icon-menu').style.display = isOpen
+            ? 'none'
+            : 'block'
+          mobileBtn.querySelector('.icon-close').style.display = isOpen
+            ? 'block'
+            : 'none'
+        }).observe(drawerEl, { attributes: true, attributeFilter: ['class'] })
+      })
+    </script>
+  </body>
+</html>
