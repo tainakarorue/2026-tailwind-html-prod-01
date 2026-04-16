@@ -27,12 +27,12 @@ GsapAnimations.worldSlider = function () {
     tl.fromTo(
       title,
       { opacity: 0, x: 50 },
-      { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' },
+      { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' }
     ).fromTo(
       desc,
       { opacity: 0, x: 30 },
       { opacity: 1, x: 0, duration: 0.5 },
-      '-=0.3',
+      '-=0.3'
     )
   }
 
@@ -102,17 +102,19 @@ GsapAnimations.slider = function () {
     tl.fromTo(
       title,
       { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+      { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
     ).fromTo(
       description,
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 0.5 },
-      '-=0.3',
+      '-=0.3'
     )
   }
 
   new Swiper('.gsap-slider', {
-    speed: 0,
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    speed: 600,
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,

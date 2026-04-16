@@ -7,12 +7,16 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-amber-100: oklch(96.2% 0.059 95.617);
     --color-amber-300: oklch(87.9% 0.169 91.605);
-    --color-gray-600: oklch(44.6% 0.03 256.802);
-    --color-gray-700: oklch(37.3% 0.034 259.733);
+    --color-amber-700: oklch(55.5% 0.163 48.998);
+    --color-sky-100: oklch(95.1% 0.026 236.824);
+    --color-sky-200: oklch(90.1% 0.058 230.902);
+    --color-sky-700: oklch(50% 0.134 242.749);
+    --color-violet-700: oklch(49.1% 0.27 292.581);
+    --color-slate-700: oklch(37.2% 0.044 257.287);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-black: #000;
+    --color-white: #fff;
     --spacing: 0.25rem;
     --text-base: 1rem;
     --text-base--line-height: calc(1.5 / 1);
@@ -230,6 +234,22 @@
   .table {
     display: table;
   }
+  .size-36 {
+    width: calc(var(--spacing) * 36);
+    height: calc(var(--spacing) * 36);
+  }
+  .h-80 {
+    height: calc(var(--spacing) * 80);
+  }
+  .h-96 {
+    height: calc(var(--spacing) * 96);
+  }
+  .h-\[80\%\] {
+    height: 80%;
+  }
+  .h-\[80vh\] {
+    height: 80vh;
+  }
   .h-\[95vh\] {
     height: 95vh;
   }
@@ -242,11 +262,20 @@
   .min-h-screen {
     min-height: 100vh;
   }
+  .w-1 {
+    width: calc(var(--spacing) * 1);
+  }
+  .w-1\/2 {
+    width: calc(1 / 2 * 100%);
+  }
+  .w-36 {
+    width: calc(var(--spacing) * 36);
+  }
+  .w-52 {
+    width: calc(var(--spacing) * 52);
+  }
   .w-full {
     width: 100%;
-  }
-  .w-screen {
-    width: 100vw;
   }
   .max-w-\[90\%\] {
     max-width: 90%;
@@ -281,6 +310,32 @@
   .justify-center {
     justify-content: center;
   }
+  .justify-end {
+    justify-content: flex-end;
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .space-y-1 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-2 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .gap-y-3 {
+    row-gap: calc(var(--spacing) * 3);
+  }
   .gap-y-4 {
     row-gap: calc(var(--spacing) * 4);
   }
@@ -291,14 +346,53 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .bg-amber-300 {
-    background-color: var(--color-amber-300);
+  .bg-amber-700 {
+    background-color: var(--color-amber-700);
+  }
+  .bg-black {
+    background-color: var(--color-black);
+  }
+  .bg-black\/30 {
+    background-color: color-mix(in srgb, #000 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 30%, transparent);
+    }
+  }
+  .bg-sky-100 {
+    background-color: var(--color-sky-100);
+  }
+  .bg-sky-200 {
+    background-color: var(--color-sky-200);
+  }
+  .bg-sky-700 {
+    background-color: var(--color-sky-700);
+  }
+  .bg-slate-700 {
+    background-color: var(--color-slate-700);
+  }
+  .bg-violet-700 {
+    background-color: var(--color-violet-700);
+  }
+  .object-contain {
+    object-fit: contain;
+  }
+  .object-cover {
+    object-fit: cover;
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
-  .py-20 {
-    padding-block: calc(var(--spacing) * 20);
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+  .pt-0 {
+    padding-top: calc(var(--spacing) * 0);
+  }
+  .pb-0 {
+    padding-bottom: calc(var(--spacing) * 0);
+  }
+  .text-center {
+    text-align: center;
   }
   .text-4xl {
     font-size: var(--text-4xl);
@@ -315,8 +409,17 @@
   .text-gray-800 {
     color: var(--color-gray-800);
   }
+  .text-white {
+    color: var(--color-white);
+  }
   .underline {
     text-decoration-line: underline;
+  }
+  .bg-blend-color {
+    background-blend-mode: color;
+  }
+  .bg-blend-color-dodge {
+    background-blend-mode: color-dodge;
   }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
@@ -328,6 +431,14 @@
   }
   .blur {
     --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .invert-75 {
+    --tw-invert: invert(75%);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .invert-100 {
+    --tw-invert: invert(100%);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .filter {
@@ -343,9 +454,44 @@
       display: none;
     }
   }
+  .md\:w-full {
+    @media (width >= 48rem) {
+      width: 100%;
+    }
+  }
+  .md\:flex-row {
+    @media (width >= 48rem) {
+      flex-direction: row;
+    }
+  }
+  .md\:justify-between {
+    @media (width >= 48rem) {
+      justify-content: space-between;
+    }
+  }
+  .md\:justify-center {
+    @media (width >= 48rem) {
+      justify-content: center;
+    }
+  }
+  .md\:justify-normal {
+    @media (width >= 48rem) {
+      justify-content: normal;
+    }
+  }
   .md\:p-5 {
     @media (width >= 48rem) {
       padding: calc(var(--spacing) * 5);
+    }
+  }
+  .md\:pt-0 {
+    @media (width >= 48rem) {
+      padding-top: calc(var(--spacing) * 0);
+    }
+  }
+  .md\:pb-0 {
+    @media (width >= 48rem) {
+      padding-bottom: calc(var(--spacing) * 0);
     }
   }
   .md\:text-5xl {
@@ -535,6 +681,11 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -671,6 +822,7 @@
       --tw-rotate-z: initial;
       --tw-skew-x: initial;
       --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
       --tw-border-style: solid;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
