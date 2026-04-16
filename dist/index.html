@@ -85,6 +85,19 @@
               <span class="scroll-nav__label">Section 3</span>
             </button>
           </li>
+          <li>
+            <button class="scroll-nav__item" data-scroll-target="section-4">
+              <span class="scroll-nav__icon">
+                <img
+                  src="https://api.iconify.design/mdi:gesture-swipe-vertical.svg"
+                  width="20"
+                  height="20"
+                  alt=""
+                />
+              </span>
+              <span class="scroll-nav__label">Section 4</span>
+            </button>
+          </li>
         </ul>
       </nav>
     </aside>
@@ -232,47 +245,60 @@
         </div>
       </section>
 
-      <section id="section-3" class="section">
-        <div class="parallax-bg"></div>
-        <div class="section-inner">
-          <h2 class="section-title">Section 3 - Scrub</h2>
-          <p class="section-description">
-            スクロール量に連動してアニメーション
-          </p>
-          <div class="horizontal-container">
-            <div class="horizontal-box">A</div>
-            <div class="horizontal-box">B</div>
-            <div class="horizontal-box">C</div>
+      <section id="section-3" class="section items-center p-4 md:p-5">
+        <div
+          class="w-full max-w-[1580px] h-full flex flex-col gap-y-4 justify-between"
+        >
+          <div class="flex flex-col gap-y-5">
+            <h2 class="section-title text-6xl md:text-8xl">
+              アプリ登録報酬・キャンペーン
+            </h2>
+            <h3 class="text-4xl md:text-5xl">
+              【事前登録キャンペーン実施中！】
+            </h3>
+            <ul class="section-description text-base text-gray-800">
+              <li>ガチャ石 ×3000（召喚10回分相当）</li>
+              <li>SSR確定ガチャチケット ×1</li>
+              <li>UR武器：虚無の剣</li>
+              <li>育成素材セット（地の属性石、武器強化石など）</li>
+            </ul>
+            <div>
+              <img src="images/tokuten_touroku.jpg" alt="特典一覧" />
+            </div>
           </div>
         </div>
       </section>
 
-      <div class="py-20">
-        <div class="swiper gsap-slider">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-color: #fef3c7">
-              <h2 class="slide-title">Slide 1</h2>
-              <p class="slide-description">説明テキスト</p>
-            </div>
+      <section id="section-4" class="section h-screen items-center p-4 md:p-5">
+        <div
+          class="w-full max-w-[1580px] h-full flex flex-col gap-y-4 justify-between"
+        >
+          <div class="swiper gsap-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" style="background-color: #fef3c7">
+                <h2 class="slide-title">Slide 1</h2>
+                <p class="slide-description">説明テキスト</p>
+              </div>
 
-            <div class="swiper-slide" style="background-color: #dbeafe">
-              <h2 class="slide-title">Slide 2</h2>
-              <p class="slide-description">説明テキスト</p>
-            </div>
+              <div class="swiper-slide" style="background-color: #dbeafe">
+                <h2 class="slide-title">Slide 2</h2>
+                <p class="slide-description">説明テキスト</p>
+              </div>
 
-            <div class="swiper-slide" style="background-color: #dcfce7">
-              <h2 class="slide-title">Slide 3</h2>
-              <p class="slide-description">説明テキスト</p>
+              <div class="swiper-slide" style="background-color: #dcfce7">
+                <h2 class="slide-title">Slide 3</h2>
+                <p class="slide-description">説明テキスト</p>
+              </div>
             </div>
+            <!-- ナビゲーション -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- ページネーション -->
+            <div class="swiper-pagination"></div>
           </div>
-          <!-- ナビゲーション -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-
-          <!-- ページネーション -->
-          <div class="swiper-pagination"></div>
         </div>
-      </div>
+      </section>
     </main>
 
     <!-- オーバーレイ -->
