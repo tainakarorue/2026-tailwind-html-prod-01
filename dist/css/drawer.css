@@ -1,0 +1,101 @@
+:root {
+  /* カスタマイズ可能な変数 */
+  --drawer-width: 250px;
+  --header-height: 0px; /* ヘッダー追加時に変更 */
+  --transition-duration: 0.3s;
+}
+
+/* ヘッダー（将来用） */
+.site-header {
+  height: var(--header-height);
+  background: #333;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* メインレイアウト */
+.layout {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* ドロワーメニュー */
+.drawer {
+  width: 60px;
+  padding: 0x;
+  flex-shrink: 0;
+  background: white;
+  /* border-right: 1px solid #ddd; */
+
+  /* スクロール追従 */
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+
+  z-index: 50;
+
+  /* 閉じた状態 */
+  transition: width var(--transition-duration) ease;
+
+  @media (max-width: 768px) {
+    /* コンテンツの上に被さる形に */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+/* 開いた状態 */
+.drawer.is-open {
+  width: var(--drawer-width);
+  /* margin-left: 0; */
+}
+
+/* メインコンテンツ */
+.content {
+  flex: 1;
+  min-width: 0; /* flex子要素のオーバーフロー対策 */
+}
+
+/* オーバーレイ */
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 40;
+}
+
+.drawer-overlay.is-visible {
+  display: block;
+}
+
+/* モバイル用トグルボタン（スマホのみ表示） */
+.drawer-toggle-mobile {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+    background: #333;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.drawer-toggle-mobile img {
+  filter: invert(1);
+}

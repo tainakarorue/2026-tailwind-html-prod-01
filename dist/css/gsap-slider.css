@@ -1,0 +1,213 @@
+/* ===========================
+   World Thumbs Gallery
+   =========================== */
+
+/*
+ * height: 100% チェーンは使わない。
+ * 理由:
+ *   horizontal Swiper では .swiper-wrapper の高さはスライドのコンテンツで決まる。
+ *   height: 100% を wrapper に設定すると循環参照になり 0 に解決される。
+ *   また Swiper の ResizeObserver が height 変化を検知して無限ループになる。
+ *
+ * 解決策:
+ *   .swiper-slide と .world-slider に calc() で明示的なサイズを与える。
+ */
+
+.world-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80vh;
+  gap: 8px;
+}
+
+/* ---- メインスライダー ---- */
+.world-slider {
+  position: relative;
+  width: 100%;
+  height: calc(80vh - 100px); /* SP: 全体 - サムネ高さ */
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* スライドに直接高さを指定（height:100% チェーンを使わない） */
+.world-slider .swiper-slide {
+  height: calc(80vh - 100px);
+}
+
+.world-slide-inner {
+  width: 100%;
+  height: 100%; /* 親(.swiper-slide)が明示値なので 100% が正しく解決する */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.world-slide-content {
+  width: fit-content;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.world-slide-title {
+  font-size: 3.75rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.world-slide-desc {
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* ---- ナビゲーション ---- */
+
+/*
+ * SP: .world-slider-nav をスライダー下部中央に絶対配置し、
+ *     2つのボタンを横並びで中央に配置する。
+ * PC: display: contents でラッパーを「消して」ボタンを直接子要素扱いにし、
+ *     個別の absolute 配置（左右中央）に戻す。
+ */
+.world-slider-nav {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.world-slider-prev,
+.world-slider-next {
+  position: relative; /* SP: flex 子要素として配置 */
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.3s;
+  padding: 0;
+}
+
+.world-slider-prev:hover,
+.world-slider-next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.world-slider-prev svg,
+.world-slider-next svg {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.world-slider-prev.swiper-button-disabled,
+.world-slider-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ---- サムネイル ---- */
+.world-slider-thumbs {
+  width: 100%;
+  height: 100px; /* SP: 固定高さ */
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/*
+ * SP (horizontal): swiper-wrapper の height は Swiper に任せる。
+ * スライドに px 直接指定して Swiper がその高さをそのまま使う。
+ */
+.world-thumb-slide {
+  height: 100px; /* SP: コンテナと同じ高さを直接指定 */
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.world-thumb-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.world-thumb-slide.swiper-slide-thumb-active {
+  opacity: 1;
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}
+
+/* ---- PC レイアウト ---- */
+@media (min-width: 768px) {
+  .world-slider-wrapper {
+    flex-direction: row;
+  }
+
+  /* PC: メインスライダーは flex で残り幅を占有、高さは 80vh */
+  .world-slider {
+    flex: 1;
+    height: 80vh;
+  }
+
+  .world-slider .swiper-slide {
+    height: 80vh;
+  }
+
+  /* PC: 縦サムネイル — Swiper が slidesPerView から高さを自動計算 */
+  .world-slider-thumbs {
+    width: 180px;
+    height: 80vh;
+    flex-shrink: 0;
+  }
+
+  .world-thumb-slide {
+    height: auto; /* vertical Swiper が inline style で高さをセットする */
+  }
+}
+
+/* ===========================
+   Gsap Slider (既存)
+   =========================== */
+
+.gsap-slider {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.gsap-slider .swiper-slide {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.slide-description {
+  font-size: 1rem;
+  color: #666;
+}

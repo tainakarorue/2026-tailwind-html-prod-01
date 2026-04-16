@@ -1,0 +1,145 @@
+/**
+ * ScrollNav Base Styles
+ *
+ * このファイルは最小限の機能的スタイルのみを提供します。
+ * 位置やデザインはプロジェクトのCSSで自由にカスタマイズしてください。
+ *
+ * 例:
+ * .scroll-nav {
+ *   position: fixed;
+ *   top: 1rem;
+ *   left: 1rem;
+ *   z-index: 50;
+ *   display: flex;
+ *   flex-direction: column;
+ *   gap: 0.5rem;
+ * }
+ *
+ * .scroll-nav__item {
+ *   padding: 0.5rem 1rem;
+ *   background-color: #e5e7eb;
+ *   border-radius: 0.25rem;
+ * }
+ *
+ * .scroll-nav__item.is-active {
+ *   background-color: #000;
+ *   color: #fff;
+ * }
+ */
+
+/* Lenis 用 html/body 設定 */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ナビゲーション */
+:root {
+  --drawer-width: 250px;
+}
+
+.scroll-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.scroll-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 5px;
+}
+
+.scroll-nav__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  height: 50px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  /* background-color: #e5e7eb; */
+  color: #000000;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.scroll-nav__item:hover {
+  background-color: #d1d5db;
+}
+
+.scroll-nav__item.is-active {
+  background-color: #6b94da;
+  color: #fff;
+}
+
+/* 閉じているときアイコンを中央寄せ */
+.drawer:not(.is-open) .scroll-nav__item {
+  justify-content: center;
+  padding: 0.5rem;
+  gap: 0;
+}
+
+/* アクティブ時にアイコンを反転（黒SVG→白） */
+.scroll-nav__item.is-active .scroll-nav__icon img {
+  filter: invert(1);
+}
+
+/* メニュー/閉じるアイコン切り替え（ナビのトグルボタン） */
+.icon-close {
+  display: none;
+}
+.drawer.is-open .icon-close {
+  display: block;
+}
+.drawer.is-open .icon-menu {
+  display: none;
+}
+
+.scroll-nav__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+}
+
+.scroll-nav__label {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition:
+    opacity 0.3s ease,
+    max-width 0.3s ease;
+}
+
+.drawer.is-open .scroll-nav__label {
+  opacity: 1;
+  max-width: var(--drawer-width);
+}

@@ -50,10 +50,8 @@
 }
 
 .section {
-  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -70,18 +68,6 @@
   position: relative;
   z-index: 1;
   text-align: center;
-}
-
-.section-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.section-description {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 2rem;
 }
 
 /* Section 1: Box */
@@ -181,4 +167,18 @@
   border-radius: 8px;
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+.world-img {
+  background-size: cover;
+  background-position: center;
+}
+.world-01 {
+  background-image: url(../images/world_01.jpg);
+}
+.world-02 {
+  background-image: url(../images/world_02.jpg);
+}
+.world-03 {
+  background-image: url(../images/world_03.jpg);
 }

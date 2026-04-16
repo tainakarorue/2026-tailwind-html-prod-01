@@ -4,11 +4,6 @@ node_modules/
 # TanStack
 .tanstack/
 
-# Build output
-dist/
-.output/
-.vinxi/
-
 # Environment variables
 .env
 .env.local
