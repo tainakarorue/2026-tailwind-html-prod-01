@@ -36,12 +36,57 @@
 }
 
 .world-slide-inner {
+  position: relative;
   width: 100%;
-  height: 100%; /* 親(.swiper-slide)が明示値なので 100% が正しく解決する */
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 1.25rem;
+}
+
+/* デコレーションライン（上部横線） */
+.slide-deco-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.2) 100%);
+  transform-origin: left center;
+}
+
+/* コーナーブラケット */
+.slide-corner {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-color: rgba(255, 255, 255, 0.75);
+  border-style: solid;
+}
+
+.slide-corner-tl {
+  top: 14px;
+  left: 14px;
+  border-width: 2px 0 0 2px;
+}
+
+.slide-corner-br {
+  bottom: 14px;
+  right: 14px;
+  border-width: 0 2px 2px 0;
+}
+
+/* タグラベル */
+.slide-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border-left: 3px solid #fff;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
 }
 
 .world-slide-content {
@@ -54,17 +99,60 @@
   overflow: hidden;
 }
 
+/* タイトルラップ（背景スライドイン用） */
+.slide-title-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.slide-title-bg {
+  position: absolute;
+  inset: 0 -6px;
+  clip-path: inset(0 100% 0 0);
+}
+
 .world-slide-title {
+  position: relative;
   font-size: 3.75rem;
   font-weight: bold;
   color: #fff;
   line-height: 1.2;
 }
 
+/* ディスクリプションラップ（背景スライドイン用） */
+.slide-desc-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.slide-desc-bg {
+  position: absolute;
+  inset: 0 -6px;
+  clip-path: inset(0 100% 0 0);
+}
+
 .world-slide-desc {
+  position: relative;
   font-size: 1rem;
   color: #fff;
   line-height: 1.6;
+}
+
+/* スライドごとの背景色 */
+.world-01 .slide-title-bg,
+.world-01 .slide-desc-bg {
+  background: #1d4ed8;
+}
+
+.world-02 .slide-title-bg,
+.world-02 .slide-desc-bg {
+  background: #d97706;
+}
+
+.world-03 .slide-title-bg,
+.world-03 .slide-desc-bg {
+  background: #dc2626;
 }
 
 /* ---- ナビゲーション ---- */
@@ -198,4 +286,253 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+/* キャラクタースライダー装飾要素 */
+.chara-slide-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* テーマカラー変数 */
+.chara-theme-01 {
+  --chara-c1: #1e3a8a;
+  --chara-c2: #1d4ed8;
+  --chara-c3: #60a5fa;
+}
+.chara-theme-02 {
+  --chara-c1: #4c0519;
+  --chara-c2: #9f1239;
+  --chara-c3: #fb7185;
+}
+.chara-theme-03 {
+  --chara-c1: #022c22;
+  --chara-c2: #065f46;
+  --chara-c3: #34d399;
+}
+.chara-theme-04 {
+  --chara-c1: #3b0764;
+  --chara-c2: #701a75;
+  --chara-c3: #e879f9;
+}
+.chara-theme-05 {
+  --chara-c1: #082f49;
+  --chara-c2: #0c4a6e;
+  --chara-c3: #38bdf8;
+}
+
+/* スライド背景パネル */
+.chara-slide-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  clip-path: inset(0 0 0 100%);
+  background: linear-gradient(
+    135deg,
+    var(--chara-c1) 0%,
+    var(--chara-c2) 55%,
+    var(--chara-c3) 100%
+  );
+}
+
+/* 装飾シェイプ */
+.chara-deco-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.chara-shape {
+  position: absolute;
+}
+
+.chara-shape-ring-l {
+  width: min(65vh, 52vw);
+  height: min(65vh, 52vw);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  left: 25%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chara-shape-ring-s {
+  width: min(38vh, 30vw);
+  height: min(38vh, 30vw);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  left: 25%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chara-shape-line-h {
+  width: 48%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  top: 18%;
+  left: 0;
+}
+
+/* エレメントアイコン */
+.chara-element-icon {
+  position: absolute;
+  width: clamp(240px, 24vw, 360px);
+  height: auto;
+  left: 25%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .chara-element-icon {
+    width: clamp(300px, 50vw, 700px);
+  }
+}
+
+/* 背景数字 */
+.chara-bg-num {
+  position: absolute;
+  right: -2vw;
+  bottom: -4vh;
+  font-size: clamp(8rem, 22vw, 20rem);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+  letter-spacing: -0.05em;
+}
+
+/* コンテンツを最前面に（装飾より上） */
+.chara-img-col,
+.chara-text-col {
+  position: relative;
+  z-index: 3;
+}
+
+/* タイトル・説明文の背景スライドイン */
+.chara-title-wrap,
+.chara-desc-wrap {
+  position: relative;
+  display: block;
+}
+
+.chara-title-bg,
+.chara-desc-bg {
+  position: absolute;
+  inset: 0 -4px;
+  z-index: 0;
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+}
+
+/* 文字が bg より前面に来るよう z-index を確保 */
+.chara-title-wrap .slide-title,
+.chara-desc-wrap .slide-description {
+  position: relative;
+  z-index: 1;
+}
+
+/* 各スライドの背景色: 親色を基準に filter: brightness で明度調整 */
+/* タイトル背景: 親より明るく */
+.bg-blue-700 .chara-title-bg {
+  background: #1d4ed8;
+  filter: brightness(1.5);
+}
+.bg-rose-800 .chara-title-bg {
+  background: #9f1239;
+  filter: brightness(1.5);
+}
+.bg-emerald-800 .chara-title-bg {
+  background: #065f46;
+  filter: brightness(1.5);
+}
+.bg-fuchsia-900 .chara-title-bg {
+  background: #701a75;
+  filter: brightness(1.5);
+}
+.bg-sky-900 .chara-title-bg {
+  background: #0c4a6e;
+  filter: brightness(1.5);
+}
+
+/* 説明文背景: 親より暗く */
+.bg-blue-700 .chara-desc-bg {
+  background: #1d4ed8;
+  filter: brightness(0.65);
+}
+.bg-rose-800 .chara-desc-bg {
+  background: #9f1239;
+  filter: brightness(0.65);
+}
+.bg-emerald-800 .chara-desc-bg {
+  background: #065f46;
+  filter: brightness(0.65);
+}
+.bg-fuchsia-900 .chara-desc-bg {
+  background: #701a75;
+  filter: brightness(0.65);
+}
+.bg-sky-900 .chara-desc-bg {
+  background: #0c4a6e;
+  filter: brightness(0.65);
+}
+
+.gsap-slider-prev,
+.gsap-slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.3s;
+  padding: 0;
+}
+
+.gsap-slider-prev {
+  left: 10px;
+}
+
+.gsap-slider-next {
+  right: 10px;
+}
+
+.gsap-slider-prev:hover,
+.gsap-slider-next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.gsap-slider-prev svg,
+.gsap-slider-next svg {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.gsap-slider-prev.swiper-button-disabled,
+.gsap-slider-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
 }
