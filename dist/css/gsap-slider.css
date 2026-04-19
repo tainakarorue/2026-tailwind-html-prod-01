@@ -536,3 +536,270 @@
   cursor: default;
   pointer-events: none;
 }
+
+/* ===========================
+   Section Heading Block
+   =========================== */
+
+/* テーマカラー変数 */
+#section-2 { --sa: #2563eb; --sa-bg-h2: #1e3a8a; --sa-bg-h3: #1e40af; }
+#section-3 { --sa: #4f46e5; --sa-bg-h2: #312e81; --sa-bg-h3: #3730a3; }
+#section-4 { --sa: #d97706; --sa-bg-h2: #78350f; --sa-bg-h3: #92400e; }
+#section-5 { --sa: #7c3aed; --sa-bg-h2: #4c1d95; --sa-bg-h3: #5b21b6; }
+
+.section-heading-block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ---- デコレーション要素 ---- */
+.section-deco {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+/* 下部デコ: 水平反転で右から左向きに */
+.section-deco--bottom {
+  transform: scaleX(-1);
+}
+
+/* 下部デコのコーナーだけ上下反転 → └ 形に */
+.section-deco--bottom .sdeco-corner {
+  transform: translateY(-50%) scaleY(-1);
+}
+
+.sdeco-corner {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-left: 3px solid var(--sa, #6366f1);
+  border-top: 3px solid var(--sa, #6366f1);
+  opacity: 0;
+}
+
+.sdeco-line {
+  position: absolute;
+  left: 26px;
+  top: calc(50% - 1px);
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--sa, #6366f1) 60%, transparent);
+}
+
+.sdeco-gem {
+  position: absolute;
+  left: 250px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--sa, #6366f1);
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0;
+}
+
+.sdeco-dot {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sa, #6366f1);
+  opacity: 0;
+}
+.sdeco-dot:nth-child(4) { left: 278px; }
+.sdeco-dot:nth-child(5) { left: 292px; }
+.sdeco-dot:nth-child(6) { left: 306px; }
+
+/* ---- h2 ラッパー ---- */
+.section-h2-wrap {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.section-h2-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--sa-bg-h2, #1e3a8a);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-h2-wrap .section-title {
+  position: relative;
+  z-index: 1;
+  padding: 5px;
+}
+
+/* ---- h3 ラッパー ---- */
+.section-h3-wrap {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.section-h3-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--sa-bg-h3, #3730a3);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-h3-wrap h3 {
+  position: relative;
+  z-index: 1;
+  padding: 5px;
+}
+
+/* ===========================
+   Event Picture Gallery (section-4)
+   =========================== */
+
+.event-pic-full {
+  overflow: hidden;
+}
+
+.event-pic-row {
+  display: flex;
+  align-items: center;
+}
+
+/* 右向き行: decoが左側 */
+.event-pic-row--right {
+  flex-direction: row;
+}
+
+/* デコ枠: 残りスペースを flex で埋める */
+.event-pic-deco {
+  flex: 1;
+  position: relative;
+  align-self: stretch;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+/* モバイル: 縦積み・decoを画像上部に低い高さで表示 */
+@media (max-width: 767px) {
+  /* --left: DOM順 img→deco → column-reverse でdecoが上に */
+  .event-pic-row {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  /* --right: DOM順 deco→img → column のままでdecoが上に */
+  .event-pic-row--right {
+    flex-direction: column;
+  }
+
+  .event-pic-row img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .event-pic-deco {
+    display: block;
+    flex: none;
+    align-self: auto;
+    height: 90px;
+    min-height: unset;
+  }
+
+  .epdeco-num {
+    font-size: 3rem;
+    -webkit-text-stroke: 1.5px rgba(217, 119, 6, 0.5);
+  }
+
+  .epdeco-corner {
+    width: 32px;
+    height: 32px;
+  }
+
+  .epdeco-corner--tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+  .epdeco-corner--br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+
+  .epdeco-vline { top: 8%; bottom: 8%; width: 1px; }
+
+  .epdeco-diamond { width: 16px; height: 16px; border-width: 2px; }
+}
+
+/* テーマカラー変数 */
+.epdeco-theme-amber { --ep: 217, 119, 6; }
+.epdeco-theme-cyan  { --ep: 6, 182, 212; }
+.epdeco-theme-rose  { --ep: 225, 29, 72; }
+
+/* 大きい背景ナンバー */
+.epdeco-num {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(5rem, 14vw, 11rem);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(var(--ep), 0.5);
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+/* コーナーブラケット */
+.epdeco-corner {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-color: rgba(var(--ep), 0.9);
+  border-style: solid;
+  opacity: 0;
+}
+
+.epdeco-corner--tl {
+  top: 14px;
+  left: 14px;
+  border-width: 3px 0 0 3px;
+}
+
+.epdeco-corner--br {
+  bottom: 14px;
+  right: 14px;
+  border-width: 0 3px 3px 0;
+}
+
+/* 縦線 */
+.epdeco-vline {
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  bottom: 12%;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(var(--ep), 0.7) 50%, transparent);
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+/* 中央ダイヤモンド */
+.epdeco-diamond {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+  border: 3px solid rgba(var(--ep), 0.95);
+  box-shadow: 0 0 12px rgba(var(--ep), 0.4);
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  opacity: 0;
+}
