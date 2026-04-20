@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>凍てつく世界の聖痕 -Frozen Stigmata -</title>
+    <link rel="icon" href="favicon.icon" />
     <link rel="stylesheet" href="css/output.css" />
 
     <!-- Swiper CSS -->
@@ -47,55 +48,68 @@
             </button>
           </li>
           <li>
-            <button class="scroll-nav__item" data-scroll-target="section-1">
+            <button class="scroll-nav__item" data-scroll-target="page-top">
               <span class="scroll-nav__icon">
                 <img
-                  src="https://api.iconify.design/mdi:animation.svg"
+                  src="https://api.iconify.design/mdi:world-wide-web.svg"
                   width="20"
                   height="20"
                   alt=""
                 />
               </span>
-              <span class="scroll-nav__label">Section 1</span>
+              <span class="scroll-nav__label">ページトップ</span>
             </button>
           </li>
           <li>
-            <button class="scroll-nav__item" data-scroll-target="section-2">
+            <button class="scroll-nav__item" data-scroll-target="world">
               <span class="scroll-nav__icon">
                 <img
-                  src="https://api.iconify.design/mdi:timeline.svg"
+                  src="https://api.iconify.design/mdi:world-box.svg"
                   width="20"
                   height="20"
                   alt=""
                 />
               </span>
-              <span class="scroll-nav__label">Section 2</span>
+              <span class="scroll-nav__label">世界観</span>
             </button>
           </li>
           <li>
-            <button class="scroll-nav__item" data-scroll-target="section-3">
+            <button class="scroll-nav__item" data-scroll-target="character">
               <span class="scroll-nav__icon">
                 <img
-                  src="https://api.iconify.design/mdi:gesture-swipe-vertical.svg"
+                  src="https://api.iconify.design/mdi:human-male-height.svg"
                   width="20"
                   height="20"
                   alt=""
                 />
               </span>
-              <span class="scroll-nav__label">Section 3</span>
+              <span class="scroll-nav__label">キャラクター</span>
             </button>
           </li>
           <li>
-            <button class="scroll-nav__item" data-scroll-target="section-4">
+            <button class="scroll-nav__item" data-scroll-target="event-story">
               <span class="scroll-nav__icon">
                 <img
-                  src="https://api.iconify.design/mdi:gesture-swipe-vertical.svg"
+                  src="https://api.iconify.design/mdi:calendar-clock-outline.svg"
                   width="20"
                   height="20"
                   alt=""
                 />
               </span>
-              <span class="scroll-nav__label">Section 4</span>
+              <span class="scroll-nav__label">イベント</span>
+            </button>
+          </li>
+          <li>
+            <button class="scroll-nav__item" data-scroll-target="present">
+              <span class="scroll-nav__icon">
+                <img
+                  src="https://api.iconify.design/mdi:present-outline.svg"
+                  width="20"
+                  height="20"
+                  alt=""
+                />
+              </span>
+              <span class="scroll-nav__label">登録報酬</span>
             </button>
           </li>
         </ul>
@@ -104,7 +118,7 @@
     <!-- セクション -->
     <main class="content">
       <section
-        id="section-1"
+        id="page-top"
         class="section justify-center items-center p-4 md:p-5"
       >
         <div
@@ -128,11 +142,16 @@
         </div>
       </section>
 
-      <section id="section-2" class="section items-center p-4 md:p-5">
+      <section id="world" class="section items-center p-4 md:p-5">
         <div
           class="w-full max-w-[1580px] h-full flex flex-col gap-y-4 justify-between"
         >
           <div class="section-heading-block">
+            <div class="section-parallax-bg" aria-hidden="true">
+              <div class="parallax-shape parallax-shape--1"></div>
+              <div class="parallax-shape parallax-shape--2"></div>
+              <div class="parallax-shape parallax-shape--3"></div>
+            </div>
             <div class="section-deco" aria-hidden="true">
               <div class="sdeco-corner"></div>
               <div class="sdeco-line"></div>
@@ -297,11 +316,16 @@
         </div>
       </section>
 
-      <section id="section-3" class="section items-center p-4 md:p-5">
+      <section id="character" class="section items-center p-4 md:p-5">
         <div
           class="w-full max-w-[1580px] h-full flex flex-col gap-y-4 justify-between"
         >
           <div class="section-heading-block">
+            <div class="section-parallax-bg" aria-hidden="true">
+              <div class="parallax-shape parallax-shape--1"></div>
+              <div class="parallax-shape parallax-shape--2"></div>
+              <div class="parallax-shape parallax-shape--3"></div>
+            </div>
             <div class="section-deco" aria-hidden="true">
               <div class="sdeco-corner"></div>
               <div class="sdeco-line"></div>
@@ -653,11 +677,16 @@
         </div>
       </section>
 
-      <section id="section-4" class="section items-center p-4 md:p-5">
+      <section id="event-story" class="section items-center p-4 md:p-5">
         <div
           class="w-full max-w-[1580px] h-full flex flex-col gap-y-4 justify-between"
         >
           <div class="section-heading-block">
+            <div class="section-parallax-bg" aria-hidden="true">
+              <div class="parallax-shape parallax-shape--1"></div>
+              <div class="parallax-shape parallax-shape--2"></div>
+              <div class="parallax-shape parallax-shape--3"></div>
+            </div>
             <div class="section-deco" aria-hidden="true">
               <div class="sdeco-corner"></div>
               <div class="sdeco-line"></div>
@@ -696,7 +725,9 @@
             <img src="images/game_pic_02.jpg" alt="event_01" class="w-full" />
           </div>
           <div class="flex flex-col gap-y-5 event-pic-gallery">
-            <div class="flex items-center event-pic-row event-pic-row--left epdeco-theme-amber">
+            <div
+              class="flex items-center event-pic-row event-pic-row--left epdeco-theme-amber"
+            >
               <img src="images/game_pic_01.jpg" alt="event_02" class="h-80" />
               <div class="event-pic-deco" aria-hidden="true">
                 <div class="epdeco-num">01</div>
@@ -706,7 +737,9 @@
                 <div class="epdeco-diamond"></div>
               </div>
             </div>
-            <div class="flex items-center event-pic-row event-pic-row--right epdeco-theme-cyan">
+            <div
+              class="flex items-center event-pic-row event-pic-row--right epdeco-theme-cyan"
+            >
               <div class="event-pic-deco" aria-hidden="true">
                 <div class="epdeco-num">02</div>
                 <div class="epdeco-corner epdeco-corner--tl"></div>
@@ -716,7 +749,9 @@
               </div>
               <img src="images/game_pic_03.jpg" alt="event_02" class="h-80" />
             </div>
-            <div class="flex items-center event-pic-row event-pic-row--left epdeco-theme-rose">
+            <div
+              class="flex items-center event-pic-row event-pic-row--left epdeco-theme-rose"
+            >
               <img src="images/game_pic_04.jpg" alt="event_02" class="h-80" />
               <div class="event-pic-deco" aria-hidden="true">
                 <div class="epdeco-num">03</div>
@@ -730,11 +765,16 @@
         </div>
       </section>
 
-      <section id="section-5" class="section items-center p-4 md:p-5">
+      <section id="present" class="section items-center p-4 md:p-5">
         <div
           class="w-full max-w-[1580px] h-full flex flex-col gap-y-4 justify-between"
         >
           <div class="section-heading-block">
+            <div class="section-parallax-bg" aria-hidden="true">
+              <div class="parallax-shape parallax-shape--1"></div>
+              <div class="parallax-shape parallax-shape--2"></div>
+              <div class="parallax-shape parallax-shape--3"></div>
+            </div>
             <div class="section-deco" aria-hidden="true">
               <div class="sdeco-corner"></div>
               <div class="sdeco-line"></div>
@@ -779,6 +819,17 @@
           </div>
         </div>
       </section>
+
+      <section id="event-story" class="section items-center p-4 md:p-5">
+        <div
+          class="w-full max-w-[1580px] h-full flex flex-col gap-y-4 justify-between"
+        >
+          <div class="pic-fade-in">
+            <img src="images/banner_01.png" alt="バナー" class="w-full" />
+          </div>
+        </div>
+      </section>
+
       <footer class="w-full p-4 pb-0 md:p-5 md:pb-0 text-white">
         <div
           class="w-full flex flex-col md:flex-row items-center justify-center gap-4 p-4 bg-slate-700"

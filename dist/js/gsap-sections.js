@@ -271,6 +271,31 @@ GsapAnimations.sections = function () {
   }
 
   // ========================================
+  // worldセクション: パララックス背景装飾
+  // ========================================
+  var xRanges = [-100, -60, -30]
+  gsap.utils.toArray('.section-heading-block').forEach(function (heading) {
+    var shapes = heading.querySelectorAll('.parallax-shape')
+    if (!shapes.length) return
+    shapes.forEach(function (shape, i) {
+      var xRange = xRanges[i] || -40
+      gsap.fromTo(shape,
+        { x: xRange },
+        {
+          x: -xRange,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heading,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.5,
+          },
+        }
+      )
+    })
+  })
+
+  // ========================================
   // メインロゴ: 凍てつく吹雪アニメーション
   // ========================================
   var mainLogo = document.querySelector('.main-logo')

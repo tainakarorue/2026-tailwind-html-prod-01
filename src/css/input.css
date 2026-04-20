@@ -182,3 +182,65 @@
 .world-03 {
   background-image: url(../images/world_03.jpg);
 }
+
+/* ================================================
+   パララックス背景装飾（スクロール連動平行四辺形）
+   ================================================ */
+.section-parallax-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-parallax-bg ~ * {
+  position: relative;
+  z-index: 1;
+}
+
+.parallax-shape {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transform: skewX(-14deg);
+}
+
+/* アクセントライン：左端の細い一本 */
+.parallax-shape--1 {
+  right: 19%;
+  width: 28px;
+  background: linear-gradient(
+    180deg,
+    var(--sa-px, rgba(147, 197, 253, 0.14)) 0%,
+    transparent 100%
+  );
+  border-left: 1px solid var(--sa-px-b, rgba(147, 197, 253, 0.28));
+}
+
+/* サブバンド：中間の幅 */
+.parallax-shape--2 {
+  right: 11%;
+  width: 72px;
+  background: linear-gradient(
+    180deg,
+    var(--sa-px, rgba(147, 197, 253, 0.14)) 0%,
+    transparent 50%,
+    var(--sa-px, rgba(147, 197, 253, 0.14)) 100%
+  );
+  border-left: 1px solid var(--sa-px-b, rgba(147, 197, 253, 0.28));
+  border-right: 1px solid var(--sa-px-b, rgba(147, 197, 253, 0.10));
+}
+
+/* メインバンド：右端の最も幅広なシェイプ */
+.parallax-shape--3 {
+  right: 2%;
+  width: 130px;
+  background: linear-gradient(
+    180deg,
+    var(--sa-px, rgba(147, 197, 253, 0.14)) 0%,
+    transparent 50%,
+    var(--sa-px, rgba(147, 197, 253, 0.14)) 100%
+  );
+  border-left: 1px solid var(--sa-px-b, rgba(147, 197, 253, 0.32));
+  border-right: 1px solid var(--sa-px-b, rgba(147, 197, 253, 0.12));
+}

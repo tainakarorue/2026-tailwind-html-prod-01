@@ -542,10 +542,10 @@
    =========================== */
 
 /* テーマカラー変数 */
-#section-2 { --sa: #2563eb; --sa-bg-h2: #1e3a8a; --sa-bg-h3: #1e40af; }
-#section-3 { --sa: #4f46e5; --sa-bg-h2: #312e81; --sa-bg-h3: #3730a3; }
-#section-4 { --sa: #d97706; --sa-bg-h2: #78350f; --sa-bg-h3: #92400e; }
-#section-5 { --sa: #7c3aed; --sa-bg-h2: #4c1d95; --sa-bg-h3: #5b21b6; }
+#world        { --sa: #2563eb; --sa-bg-h2: #1e3a8a; --sa-bg-h3: #1e40af; --sa-px: rgba(37, 99, 235, 0.14);   --sa-px-b: rgba(37, 99, 235, 0.30);   }
+#character    { --sa: #4f46e5; --sa-bg-h2: #312e81; --sa-bg-h3: #3730a3; --sa-px: rgba(79, 70, 229, 0.14);   --sa-px-b: rgba(79, 70, 229, 0.30);   }
+#event-story  { --sa: #d97706; --sa-bg-h2: #78350f; --sa-bg-h3: #92400e; --sa-px: rgba(217, 119, 6, 0.14);   --sa-px-b: rgba(217, 119, 6, 0.30);   }
+#present      { --sa: #7c3aed; --sa-bg-h2: #4c1d95; --sa-bg-h3: #5b21b6; --sa-px: rgba(124, 58, 237, 0.14);  --sa-px-b: rgba(124, 58, 237, 0.30);  }
 
 .section-heading-block {
   position: relative;
