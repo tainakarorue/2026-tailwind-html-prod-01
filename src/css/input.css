@@ -244,3 +244,128 @@
   border-left: 1px solid var(--sa-px-b, rgba(147, 197, 253, 0.32));
   border-right: 1px solid var(--sa-px-b, rgba(147, 197, 253, 0.12));
 }
+
+
+/* バナー長方形バー */
+.banner-bars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.banner-freeze-reveal {
+  position: relative;
+  z-index: 1;
+}
+
+.banner-bar {
+  position: absolute;
+  border-radius: 4px;
+}
+
+/* 左から */
+.banner-bar--1  { top:  2%; height:  80px; width: 55%; left:  0; background: rgba(50,  150, 220, 0.22); }
+.banner-bar--3  { top: 18%; height: 140px; width: 70%; left:  0; background: rgba(100, 200, 240, 0.19); }
+.banner-bar--5  { top: 38%; height: 100px; width: 48%; left:  0; background: rgba(20,  120, 210, 0.2);  }
+.banner-bar--7  { top: 56%; height: 160px; width: 62%; left:  0; background: rgba(70,  180, 235, 0.18); }
+.banner-bar--9  { top: 76%; height:  90px; width: 52%; left:  0; background: rgba(40,  100, 190, 0.21); }
+/* 右から */
+.banner-bar--2  { top: 10%; height: 110px; width: 44%; right: 0; background: rgba(20,   90, 200, 0.18); }
+.banner-bar--4  { top: 28%; height:  75px; width: 58%; right: 0; background: rgba(0,   70,  175, 0.16); }
+.banner-bar--6  { top: 48%; height: 130px; width: 40%; right: 0; background: rgba(80,  170, 230, 0.2);  }
+.banner-bar--8  { top: 66%; height:  85px; width: 65%; right: 0; background: rgba(30,  110, 205, 0.19); }
+.banner-bar--10 { top: 84%; height: 120px; width: 50%; right: 0; background: rgba(60,  155, 220, 0.22); }
+
+/* バナー氷結リビール */
+.banner-freeze-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-freeze-reveal img {
+  display: block;
+  width: 100%;
+}
+
+/* スクロールインジケーター */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  color: rgba(50, 70, 90, 0.9);
+  text-decoration: none;
+  animation: scroll-indicator-fade 2s ease-in-out infinite;
+}
+
+.scroll-indicator__pulse-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.scroll-indicator__pulse-ring {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(80, 150, 200, 0.85);
+  animation: scroll-pulse 4s ease-out infinite;
+}
+
+.scroll-indicator__pulse-ring--delay-1 { animation-delay: 1s; }
+.scroll-indicator__pulse-ring--delay-2 { animation-delay: 2s; }
+.scroll-indicator__pulse-ring--delay-3 { animation-delay: 3s; }
+
+.scroll-indicator__label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(50, 70, 90, 0.9);
+}
+
+.scroll-indicator__mouse {
+  display: block;
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(50, 70, 90, 0.7);
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-indicator__wheel {
+  display: block;
+  width: 4px;
+  height: 8px;
+  background: rgba(50, 70, 90, 0.9);
+  border-radius: 2px;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-wheel 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-wheel {
+  0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80%  { opacity: 0; transform: translateX(-50%) translateY(14px); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(14px); }
+}
+
+@keyframes scroll-indicator-fade {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+@keyframes scroll-pulse {
+  0%   { transform: scale(0.7); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+

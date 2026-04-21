@@ -253,6 +253,84 @@ GsapAnimations.sections = function () {
   })
 
   // ========================================
+  // バナー: 氷結スライスリビール
+  // ========================================
+  gsap.utils.toArray('.banner-freeze-reveal').forEach(function (wrap) {
+    var img = wrap.querySelector('img')
+    if (!img) return
+
+    var SLICES = 14
+    wrap.style.position = 'relative'
+    wrap.style.overflow = 'hidden'
+
+    var overlay = document.createElement('div')
+    overlay.style.cssText = 'position:absolute;inset:0;z-index:2;pointer-events:none;'
+
+    var slices = []
+    for (var i = 0; i < SLICES; i++) {
+      var slice = document.createElement('div')
+      var pct = 100 / SLICES
+      var lightness = 92 + (i % 2) * 4
+      slice.style.cssText = [
+        'position:absolute',
+        'left:0',
+        'width:100%',
+        'top:' + (i * pct) + '%',
+        'height:' + pct + '%',
+        'background:linear-gradient(90deg,rgba(190,225,248,0.97) 0%,rgba(' + lightness + ',' + lightness + ',255,0.93) 100%)',
+        'transform-origin:top center',
+      ].join(';')
+      overlay.appendChild(slice)
+      slices.push(slice)
+    }
+    wrap.appendChild(overlay)
+
+    gsap.set(img, { filter: 'brightness(1.4) saturate(0.2) hue-rotate(190deg)', scale: 1.04 })
+
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: wrap,
+        start: 'top 78%',
+        toggleActions: 'play none none reverse',
+      },
+    })
+
+    tl.to(slices, {
+      scaleY: 0,
+      duration: 0.45,
+      stagger: 0.055,
+      ease: 'power3.in',
+      transformOrigin: 'top center',
+    })
+    .to(img, {
+      filter: 'brightness(1) saturate(1) hue-rotate(0deg)',
+      scale: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+    }, '-=0.35')
+
+    var barsWrap  = wrap.parentNode.querySelector('.banner-bars')
+    if (barsWrap) {
+      var leftBars  = barsWrap.querySelectorAll('.banner-bar--left')
+      var rightBars = barsWrap.querySelectorAll('.banner-bar--right')
+      gsap.set(leftBars,  { xPercent: -120 })
+      gsap.set(rightBars, { xPercent:  120 })
+      tl.to(leftBars, {
+        xPercent: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power3.out',
+      }, '-=0.1')
+      .to(rightBars, {
+        xPercent: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power3.out',
+      }, '<')
+    }
+  })
+
+  // ========================================
   // パルスリング
   // ========================================
   var pulseRings = document.querySelectorAll('.pulse-ring')
