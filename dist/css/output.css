@@ -199,6 +199,9 @@
   .end {
     inset-inline-end: var(--spacing);
   }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -324,6 +327,9 @@
   .bg-slate-700 {
     background-color: var(--color-slate-700);
   }
+  .object-contain {
+    object-fit: contain;
+  }
   .object-cover {
     object-fit: cover;
   }
@@ -410,21 +416,6 @@
   .md\:w-full {
     @media (width >= 48rem) {
       width: 100%;
-    }
-  }
-  .md\:max-w-\[50vh\] {
-    @media (width >= 48rem) {
-      max-width: 50vh;
-    }
-  }
-  .md\:max-w-\[70vh\] {
-    @media (width >= 48rem) {
-      max-width: 70vh;
-    }
-  }
-  .md\:max-w-\[80vh\] {
-    @media (width >= 48rem) {
-      max-width: 80vh;
     }
   }
   .md\:max-w-\[90vh\] {
